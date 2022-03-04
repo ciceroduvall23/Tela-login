@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://use.fontawesome.com/a2f9875732.js"></script>
+
+
+    <link rel="stylesheet" href="style cadastrar.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="container">
+         <div class="card">
+              <h1>Cadastrar</h1>
+              <div class="label-float">
+                  <input type="text" id="nome" placeholder="" required>
+                 <label id="labelNome" for="nome">Nome</label>
+                 </div>
+
+                 <div class="label-float">
+                    <input type="text" id="usuario" placeholder="" required>
+                   <label id="labelUsuario" for="usuario">Usuario</label>
+                   </div>
+
+                 <div class="label-float">
+                    <input type="password" id="senha" placeholder="" required>
+                   <label id="labelSenha" for="usuario">Senha</label>
+                   <i  id="verSenha"  class="fa fa-eye" aria-hidden="true"></i>
+
+                   </div>
+
+                   <div class="label-float">
+                    <input type="password" id="confirmSenha" placeholder="" required>
+                   <label id="labelConfirmSenha" for="confirSenha">Confirmar Senha</label>
+                   <i  id="verconfirmSenha"  class="fa fa-eye" aria-hidden="true"></i>
+                   </div>
+
+                   <div class="justify-center">
+                       <button onclick='cadastrar()'>Entrar</button>
+                   </div>
+
+                   <div class="justify-center">
+                       <hr>
+                   </div>
+                   <p>Já tem conta?</p>
+                   <a href="Index.html">Fazer login</a>
+         </div>
+
+     </div>
+  
+   <script>
+ let btn = document.querySelector('#verSenha')
+ let btnConfirm = document.querySelector('#verconfirmSenha')
+ 
+ /* vamos criarcom o let para chamar todos os campos de input chamando o DOM*/
+
+ let nome = document.querySelector('#nome ')
+ let labelNome = document.querySelector('#labelNome')
+
+ let usuario = document.querySelector('#usuario')
+ let labelUsuario = document.querySelector('#labelUsuario')
+
+ let senha = document.querySelector('#senha')
+ let labelSenha = document.querySelector('#labelSenha')
+
+ let confirmSenha = document.querySelector('#confirmSenha')
+ let labelConfirmSenha = document.querySelector('#labelConfirmSenha')
+
+ nome.addEventListener('keyup', () => {
+  if(nome.value.length <= 5 ){
+     labelNome.setAttribute('style', 'color: red')
+     labelNome.innerHTML = 'Nome *insira no minimo 5 caracteres'
+     nome.setAttribute('style', 'border-color:red')
+
+  }else {
+    labelNome.setAttribute('style', 'color: green')
+     labelNome.innerHTML = 'Nome'
+     nome.setAttribute('style', 'border-color:green')
+  }
+ })
+
+
+ usuario.addEventListener('keyup', () => {
+  if(usuario.value.length <= 5 ){
+    labelUsuario.setAttribute('style', 'color: red')
+    labelUsuario.innerHTML = 'Usuario *insira no minimo 5 caracteres'
+    nome.setAttribute('style', 'border-color:red')
+
+  }else {
+    labelUsuario.setAttribute('style', 'color: green')
+    labelUsuario.innerHTML = 'Usuario'
+    usuario.setAttribute('style', 'border-color:green')
+  }
+ })
+
+
+
+
+ btn.addEventListener('click', ()=>{
+   let inputSenha = document.querySelector('#senha')
+ 
+  if(inputSenha.getAttribute('type') == 'password'){
+   inputSenha.setAttribute('type', 'text')
+
+  } else {
+   inputSenha.setAttribute('type', 'password')
+  }
+})
+
+  
+   btnConfirm.addEventListener('click', ()=>{
+let inputSenha = document.querySelector('#confirmSenha')
+
+if(inputSenha.getAttribute('type') == 'password'){
+inputSenha.setAttribute('type', 'text')
+
+} else {
+inputSenha.setAttribute('type', 'password')
+}
+})
+
+</script>
+
+</body>
+</html>
