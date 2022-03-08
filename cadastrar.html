@@ -53,50 +53,103 @@
    <script>
  let btn = document.querySelector('#verSenha')
  let btnConfirm = document.querySelector('#verconfirmSenha')
+
  
- /* vamos criarcom o let para chamar todos os campos de input chamando o DOM*/
+ /* vamos criar com o let para chamar todos os campos de input chamando o DOM*/
 
  let nome = document.querySelector('#nome ')
  let labelNome = document.querySelector('#labelNome')
+ let validNome= false    /*valid é um valor booleano ou seja true ou false */
 
  let usuario = document.querySelector('#usuario')
  let labelUsuario = document.querySelector('#labelUsuario')
+ let validUsuario = false    /*valid é um valor booleano  */
 
  let senha = document.querySelector('#senha')
  let labelSenha = document.querySelector('#labelSenha')
+ let validSenha = false   /*valid é um valor booleano  */
 
  let confirmSenha = document.querySelector('#confirmSenha')
  let labelConfirmSenha = document.querySelector('#labelConfirmSenha')
+ let validConfirmSenha = false   /*valid é um valor booleano  */
 
- nome.addEventListener('keyup', () => {
+
+/* Verificar se cada campo está preenxido*/
+
+function cadastrar(){
+  if(validNome && validUsuario && validSenha && validConfirmSenha){
+ alert('Tudo certo filhão !!')
+  } else {
+     alert('Tem algo errado ai em... Verifique os campos.')
+  }
+
+}
+
+/* -----------------------------------------------------------*/
+ nome.addEventListener('keyup', () => { /* adicionamos o evento keyup,assim que eu digitar e e soltar os dedos das teclas  ele começa a executar a função que está dentro da arrowFunction */
   if(nome.value.length <= 5 ){
      labelNome.setAttribute('style', 'color: red')
      labelNome.innerHTML = 'Nome *insira no minimo 5 caracteres'
      nome.setAttribute('style', 'border-color:red')
+    validNome = false
+
 
   }else {
     labelNome.setAttribute('style', 'color: green')
      labelNome.innerHTML = 'Nome'
      nome.setAttribute('style', 'border-color:green')
+     validNome = true
   }
  })
-
 
  usuario.addEventListener('keyup', () => {
   if(usuario.value.length <= 5 ){
     labelUsuario.setAttribute('style', 'color: red')
     labelUsuario.innerHTML = 'Usuario *insira no minimo 5 caracteres'
     nome.setAttribute('style', 'border-color:red')
+    validUsuario = false
 
   }else {
     labelUsuario.setAttribute('style', 'color: green')
     labelUsuario.innerHTML = 'Usuario'
     usuario.setAttribute('style', 'border-color:green')
+    validUsuario = true
   }
  })
 
+   /* senha*/
+ senha.addEventListener('keyup', () => {
+  if(senha.value.length <= 5 ){
+    labelSenha.setAttribute('style', 'color: red')
+    labelSenha.innerHTML = 'Senha *insira no minimo 6 caracteres'
+    nome.setAttribute('style', 'border-color:red')
+    validSenha = false
 
+  }else {
+    labelSenha.setAttribute('style', 'color: green')
+    labelSenha.innerHTML = 'Senha'
+    senha.setAttribute('style', 'border-color:green')
+    validSenha = true
+  }
+ })
 
+    /* confirmar senha,vou verificar se as senha digitadas são identicas*/
+    confirmSenha.addEventListener('keyup', () => {
+  if(senha.value != confirmSenha.value ){
+    labelConfirmSenha.setAttribute('style', 'color: red')
+    labelConfirmSenha.innerHTML = 'Confirmar Senha *As senhas não conferem'
+    confirmSenha.setAttribute('style', 'border-color:red')
+    validConfirmSenha = false
+
+  }else {
+    labelConfirmSenha.setAttribute('style', 'color: green')
+    labelConfirmSenha.innerHTML = 'Confirmar Senha'
+    confirmSenha.setAttribute('style', 'border-color:green')
+    validConfirmSenha = true
+  }
+ })
+
+/* -----------------------------------------------------------*/
 
  btn.addEventListener('click', ()=>{
    let inputSenha = document.querySelector('#senha')
